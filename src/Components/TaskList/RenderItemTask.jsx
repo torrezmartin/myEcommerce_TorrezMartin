@@ -4,7 +4,7 @@ import React from 'react'
 const RenderItemTask = ({ item, onPressTask }) => {
     return <Pressable onPress={() => onPressTask(item)}>
         <View style={styles.task} key={item.id}>
-            <Text>{item.task}</Text>
+            <Text>{item.completed == false ? item.task + ' (Incompleto)' : item.task + ' (Completado)'}</Text>
         </View>
     </Pressable>
 }

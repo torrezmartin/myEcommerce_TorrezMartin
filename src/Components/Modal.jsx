@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View, Modal, Pressable } from 'react-native'
 import React from 'react'
 
-const ModalTask = ({ modalVisible, setModalVisible, taskActive }) => {
+const ModalTask = ({ modalVisible, setModalVisible, taskActive, onPressStatus }) => {
     return (
         <Modal
             animationType="slide"
@@ -17,12 +17,18 @@ const ModalTask = ({ modalVisible, setModalVisible, taskActive }) => {
                     <View style={styles.buttonContainer}>
                         <Pressable
                             style={[styles.button, styles.buttonOK]}
-                            onPress={() => setModalVisible(!modalVisible)}>
+                            onPress={() => {
+                                onPressStatus(true)
+                                setModalVisible(!modalVisible)
+                            }}>
                             <Text style={styles.textStyle}>Completo</Text>
                         </Pressable>
                         <Pressable
                             style={[styles.button, styles.buttonNO]}
-                            onPress={() => setModalVisible(!modalVisible)}>
+                            onPress={() => {
+                                onPressStatus(false)
+                                setModalVisible(!modalVisible)
+                            }}>
                             <Text style={styles.textStyle}>Incompleto</Text>
                         </Pressable>
                         <Pressable
